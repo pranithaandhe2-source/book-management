@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Delete Book</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<h2>Delete Book</h2>
+
+
+<div class="container">
+
+
+<label>Select Book</label>
+
+
+<select id="bookSelect">
+
+<option value="">
+-- Select Book --
+</option>
+
+
+</select>
+
+
+
+<button onclick="deleteBook()">
+
+Delete Book
+
+</button>
+
+
+</div>
+
+
+
+
+<script>
+
+
+// Load books in dropdown
+
+fetch("/books")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+
+let select=document.getElementById("bookSelect");
+
+
+data.forEach(book=>{
+
+
+select.innerHTML +=
+
+`
+
+<option value="${book.book_id}">
+
+${book.book_id} - ${book.title}
+
+</option>
+
+`;
+
+
+});
+
+
+});
+
+
+
+
+
+function deleteBook(){
+
+
+let id=document.getElementById("bookSelect").value;
+
+
+if(id=="")
+{
+
+alert("Please select a book");
+
+return;
+
+}
+
+
+
+fetch("/delete/"+id,{
+
+method:"DELETE"
+
+})
+
+
+.then(res=>res.text())
+
+.then(data=>{
+
+
+alert(data);
+
+location.reload();
+
+
+});
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

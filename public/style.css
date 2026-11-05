@@ -1,0 +1,324 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.55)
+    ),
+    url("https://images.unsplash.com/photo-1507842217343-583bb7270b66");
+
+    background-size:cover;
+    background-position:center;
+
+    padding-bottom:50px;
+
+}
+
+
+
+/* Heading */
+
+h1{
+
+    color:white;
+    text-align:center;
+    padding-top:40px;
+    font-size:40px;
+
+}
+
+
+h2{
+
+    color:white;
+    text-align:center;
+    margin-top:40px;
+    font-size:30px;
+
+}
+
+
+
+/* Home Menu */
+
+.menu{
+
+    text-align:center;
+    margin-top:70px;
+
+}
+
+
+.menu a{
+
+    display:inline-block;
+
+    background:#ff9800;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:18px 35px;
+
+    margin:15px;
+
+    border-radius:30px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    transition:0.3s;
+
+}
+
+
+.menu a:hover{
+
+    background:#4caf50;
+
+    transform:translateY(-5px);
+
+}
+
+
+
+/* Form Container */
+
+.container,
+form{
+
+
+    width:380px;
+
+    background:white;
+
+    margin:40px auto;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.5);
+
+
+}
+
+
+
+/* Labels */
+
+label{
+
+    display:block;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+    color:#333;
+
+}
+
+
+
+/* Input Fields */
+
+input,
+select{
+
+
+    width:100%;
+
+    padding:13px;
+
+    margin:12px 0;
+
+    border-radius:10px;
+
+    border:1px solid #ccc;
+
+    font-size:15px;
+
+    outline:none;
+
+}
+
+
+
+input:focus,
+select:focus{
+
+    border:2px solid #ff9800;
+
+}
+
+
+
+/* Dropdown Style */
+
+select{
+
+    background:white;
+
+    cursor:pointer;
+
+}
+
+
+
+/* Buttons */
+
+
+button{
+
+
+    width:100%;
+
+    padding:14px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#4caf50;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+
+}
+
+
+
+button:hover{
+
+
+    background:#ff9800;
+
+    transform:scale(1.05);
+
+
+}
+
+
+
+/* Table Design */
+
+
+table{
+
+
+    width:90%;
+
+    margin:40px auto;
+
+    background:white;
+
+    border-collapse:collapse;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+
+}
+
+
+
+th{
+
+
+    background:#ff9800;
+
+    color:white;
+
+    padding:15px;
+
+    font-size:17px;
+
+
+}
+
+
+
+td{
+
+
+    padding:12px;
+
+    text-align:center;
+
+    border-bottom:1px solid #ddd;
+
+
+}
+
+
+
+tr:hover{
+
+
+    background:#f1f1f1;
+
+
+}
+
+
+
+/* Mobile Responsive */
+
+
+@media(max-width:600px){
+
+
+.container,
+form{
+
+width:90%;
+
+}
+
+
+.menu a{
+
+display:block;
+
+margin:20px;
+
+}
+
+
+h1{
+
+font-size:28px;
+
+}
+
+
+}

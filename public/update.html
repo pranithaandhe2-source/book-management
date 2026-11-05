@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Update Book</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<h2>Update Book Details</h2>
+
+
+<div class="container">
+
+
+<label>Select Book</label>
+
+
+<select id="bookSelect" onchange="loadBook()">
+
+<option value="">
+-- Select Book --
+</option>
+
+</select>
+
+
+
+<input id="title" placeholder="Book Title">
+
+
+<input id="author" placeholder="Author">
+
+
+
+<label>Category</label>
+
+<select id="category">
+
+<option value="Programming">Programming</option>
+<option value="Database">Database</option>
+<option value="Networking">Networking</option>
+<option value="AI">AI</option>
+<option value="DSA">DSA</option>
+<option value="Web Development">Web Development</option>
+
+</select>
+
+
+
+<input id="price" placeholder="Price">
+
+
+<input id="stock" placeholder="Stock">
+
+
+
+<button onclick="updateBook()">
+
+Update Book
+
+</button>
+
+
+</div>
+
+
+
+
+<script>
+
+
+// Load all books into dropdown
+
+fetch("/books")
+
+.then(response=>response.json())
+
+.then(data=>{
+
+
+let dropdown=document.getElementById("bookSelect");
+
+
+data.forEach(book=>{
+
+
+dropdown.innerHTML +=
+
+`
+<option value="${book.book_id}">
+
+${book.book_id} - ${book.title}
+
+</option>
+
+`;
+
+
+});
+
+
+});
+
+
+
+
+
+// Load selected book details
+
+
+function loadBook(){
+
+
+let id=document.getElementById("bookSelect").value;
+
+
+
+if(id=="")
+{
+
+return;
+
+}
+
+
+
+fetch("/books")
+
+.then(response=>response.json())
+
+.then(data=>{
+
+
+let book=data.find(
+b=>b.book_id==id
+);
+
+
+
+document.getElementById("title").value=book.title;
+
+document.getElementById("author").value=book.author;
+
+document.getElementById("category").value=book.category;
+
+document.getElementById("price").value=book.price;
+
+document.getElementById("stock").value=book.stock;
+
+
+
+});
+
+
+}
+
+
+
+
+
+// Update selected book
+
+
+function updateBook(){
+
+
+let id=document.getElementById("bookSelect").value;
+
+
+
+if(id=="")
+{
+
+alert("Please select a book");
+
+return;
+
+}
+
+
+
+fetch("/update/"+id,
+
+{
+
+method:"PUT",
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+
+body:JSON.stringify({
+
+title:document.getElementById("title").value,
+
+author:document.getElementById("author").value,
+
+category:document.getElementById("category").value,
+
+price:document.getElementById("price").value,
+
+stock:document.getElementById("stock").value
+
+
+})
+
+
+})
+
+
+.then(response=>response.text())
+
+.then(data=>{
+
+
+alert(data);
+
+
+});
+
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>
